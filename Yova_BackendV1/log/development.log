@@ -1,0 +1,612 @@
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClients (20200708202139)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.9ms)[0m  [1m[35mCREATE TABLE "clients" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202139"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20200708202157)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202157"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20200708202316)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" serial primary key, "date" date, "title" character varying, "description" text, "client_id" integer, "isRead" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_351813cf27"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (109.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_development"[0m
+  [1m[35m (104.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_test"[0m
+  [1m[35m (603.5ms)[0m  [1m[35mCREATE DATABASE "App_development" ENCODING = 'unicode'[0m
+  [1m[35m (522.0ms)[0m  [1m[35mCREATE DATABASE "App_test" ENCODING = 'unicode'[0m
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClients (20200708202139)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "clients" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202139"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20200708202157)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20200708202316)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" serial primary key, "date" date, "title" character varying, "description" text, "client_id" integer, "isRead" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_351813cf27"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_client_id" ON "notifications"  ("client_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202316"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-08 20:24:59.672397"], ["updated_at", "2020-07-08 20:24:59.672397"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin1"], ["created_at", "2020-07-08 20:44:44.093715"], ["updated_at", "2020-07-08 20:44:44.093715"]]
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin2"], ["created_at", "2020-07-08 20:44:56.596445"], ["updated_at", "2020-07-08 20:44:56.596445"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Client1"], ["created_at", "2020-07-08 20:45:18.582086"], ["updated_at", "2020-07-08 20:45:18.582086"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Client2"], ["created_at", "2020-07-08 20:45:35.905442"], ["updated_at", "2020-07-08 20:45:35.905442"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT "admins".* FROM "admins"[0m
+Started POST "/createNotification" for ::1 at 2020-07-08 22:48:36 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>4, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (1.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 404 Not Found in 16ms (ActiveRecord: 6.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Client with 'id'=4):
+  
+app/controllers/admins_controller.rb:20:in `create'
+Started POST "/createNotification" for ::1 at 2020-07-08 22:48:46 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>1, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 1], ["isRead", "f"], ["created_at", "2020-07-08 20:48:46.318937"], ["updated_at", "2020-07-08 20:48:46.318937"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 21.1ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 22:48:50 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>1, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 1], ["isRead", "f"], ["created_at", "2020-07-08 20:48:50.535326"], ["updated_at", "2020-07-08 20:48:50.535326"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 22:48:58 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 2], ["isRead", "f"], ["created_at", "2020-07-08 20:48:58.259516"], ["updated_at", "2020-07-08 20:48:58.259516"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 22:49:01 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 2], ["isRead", "f"], ["created_at", "2020-07-08 20:49:01.274820"], ["updated_at", "2020-07-08 20:49:01.274820"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 21ms (Views: 0.1ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 22:49:10 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>3, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Client with 'id'=3):
+  
+app/controllers/admins_controller.rb:20:in `create'
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:51:35 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (1.7ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 18ms (Views: 5.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:52:16 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:52:48 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 20ms (Views: 4.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:52:49 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mNotification Load (1.8ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:55:26 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:56:32 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 16ms (Views: 4.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:56:37 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:58:23 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 23ms (Views: 8.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/1/notifications" for ::1 at 2020-07-08 22:59:09 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/1/getNotifications" for ::1 at 2020-07-08 23:00:14 +0200
+Processing by ClientsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1[0m  [["client_id", 1]]
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/2/getNotifications" for ::1 at 2020-07-08 23:00:25 +0200
+Processing by ClientsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.7ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1[0m  [["client_id", 2]]
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/1/readNotification/1" for ::1 at 2020-07-08 23:01:42 +0200
+Processing by ClientsController#update as */*
+  Parameters: {"notification"=>{"date"=>"2004-10-11", "title"=>"Update", "description"=>"Update", "user_id"=>86, "isRead"=>true}, "clientID"=>"1", "notificationID"=>"1", "client"=>{}}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: date, title, description, user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "notifications" SET "isRead" = $1, "updated_at" = $2 WHERE "notifications"."id" = $3[0m  [["isRead", "t"], ["updated_at", "2020-07-08 21:01:42.967737"], ["id", 1]]
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 26ms (Views: 0.1ms | ActiveRecord: 9.2ms)
+
+
+Started PATCH "/1/readNotification/2" for ::1 at 2020-07-08 23:01:51 +0200
+Processing by ClientsController#update as */*
+  Parameters: {"notification"=>{"date"=>"2004-10-11", "title"=>"Update", "description"=>"Update", "user_id"=>86, "isRead"=>true}, "clientID"=>"1", "notificationID"=>"2", "client"=>{}}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameters: date, title, description, user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "notifications" SET "isRead" = $1, "updated_at" = $2 WHERE "notifications"."id" = $3[0m  [["isRead", "t"], ["updated_at", "2020-07-08 21:01:51.269806"], ["id", 2]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/1/readNotifications" for ::1 at 2020-07-08 23:03:27 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 22ms (Views: 4.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:03:39 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/1/readNotifications" for ::1 at 2020-07-08 23:03:47 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/1/readNotification/3" for ::1 at 2020-07-08 23:04:29 +0200
+Processing by ClientsController#update as */*
+  Parameters: {"notification"=>{"date"=>"2004-10-11", "title"=>"Update", "description"=>"Update", "user_id"=>86, "isRead"=>true}, "clientID"=>"1", "notificationID"=>"3", "client"=>{}}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Unpermitted parameters: date, title, description, user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "notifications" SET "isRead" = $1, "updated_at" = $2 WHERE "notifications"."id" = $3[0m  [["isRead", "t"], ["updated_at", "2020-07-08 21:04:29.281859"], ["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started PATCH "/1/readNotification/4" for ::1 at 2020-07-08 23:04:34 +0200
+Processing by ClientsController#update as */*
+  Parameters: {"notification"=>{"date"=>"2004-10-11", "title"=>"Update", "description"=>"Update", "user_id"=>86, "isRead"=>true}, "clientID"=>"1", "notificationID"=>"4", "client"=>{}}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Unpermitted parameters: date, title, description, user_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "notifications" SET "isRead" = $1, "updated_at" = $2 WHERE "notifications"."id" = $3[0m  [["isRead", "t"], ["updated_at", "2020-07-08 21:04:34.775407"], ["id", 4]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/1/readNotifications" for ::1 at 2020-07-08 23:04:57 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:05:06 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 8ms (Views: 4.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/1/readNotifications" for ::1 at 2020-07-08 23:05:21 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" ORDER BY "notifications"."date" DESC[0m
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/1/readNotifications" for ::1 at 2020-07-08 23:07:06 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"1"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1 ORDER BY "notifications"."date" DESC[0m  [["client_id", 1]]
+Completed 200 OK in 24ms (Views: 4.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:07:14 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1 ORDER BY "notifications"."date" DESC[0m  [["client_id", 2]]
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 23:07:42 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 2], ["isRead", "f"], ["created_at", "2020-07-08 21:07:42.643841"], ["updated_at", "2020-07-08 21:07:42.643841"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:07:54 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1 ORDER BY "notifications"."date" DESC[0m  [["client_id", 2]]
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 23:16:57 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"adminID"=>1, "notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mAdmin Load (1.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 2], ["isRead", "f"], ["created_at", "2020-07-08 21:16:57.362973"], ["updated_at", "2020-07-08 21:16:57.362973"]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 55ms (Views: 0.3ms | ActiveRecord: 17.5ms)
+
+
+Started POST "/createNotification" for ::1 at 2020-07-08 23:17:06 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"adminID"=>3, "notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mAdmin Load (1.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 1.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=3):
+  
+app/controllers/admins_controller.rb:17:in `create'
+Started POST "/createNotification" for ::1 at 2020-07-08 23:17:11 +0200
+Processing by AdminsController#create as */*
+  Parameters: {"adminID"=>2, "notification"=>{"date"=>"2000-10-11", "title"=>"Title", "description"=>"Description", "client_id"=>2, "isRead"=>false}, "admin"=>{}}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "notifications" ("date", "title", "description", "client_id", "isRead", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["date", "2000-10-11"], ["title", "Title"], ["description", "Description"], ["client_id", 2], ["isRead", "f"], ["created_at", "2020-07-08 21:17:11.737054"], ["updated_at", "2020-07-08 21:17:11.737054"]]
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:20:05 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"clientID"=>"2"}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 11ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=):
+  
+app/controllers/admins_controller.rb:4:in `show'
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:20:25 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"adminID"=>1, "clientID"=>"2", "admin"=>{}}
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.4ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1 ORDER BY "notifications"."date" DESC[0m  [["client_id", 2]]
+Completed 200 OK in 34ms (Views: 9.1ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:20:41 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"adminID"=>2, "clientID"=>"2", "admin"=>{}}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.5ms)[0m  [1m[34mSELECT "notifications".* FROM "notifications" WHERE "notifications"."client_id" = $1 ORDER BY "notifications"."date" DESC[0m  [["client_id", 2]]
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/2/readNotifications" for ::1 at 2020-07-08 23:20:54 +0200
+Processing by AdminsController#show as */*
+  Parameters: {"adminID"=>3, "clientID"=>"2", "admin"=>{}}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "admins".* FROM "admins" WHERE "admins"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Admin with 'id'=3):
+  
+app/controllers/admins_controller.rb:4:in `show'
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (104.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_development"[0m
+  [1m[35m (97.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_test"[0m
+  [1m[35m (638.6ms)[0m  [1m[35mCREATE DATABASE "App_development" ENCODING = 'unicode'[0m
+  [1m[35m (529.6ms)[0m  [1m[35mCREATE DATABASE "App_test" ENCODING = 'unicode'[0m
+  [1m[35m (30.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClients (20200708202139)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "clients" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202139"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20200708202157)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20200708202316)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" serial primary key, "date" date, "title" character varying, "description" text, "client_id" integer, "isRead" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_351813cf27"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_client_id" ON "notifications"  ("client_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202316"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-11 19:14:35.253585"], ["updated_at", "2020-07-11 19:14:35.253585"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (62.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_development"[0m
+  [1m[35m (52.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_test"[0m
+  [1m[35m (484.4ms)[0m  [1m[35mCREATE DATABASE "App_development" ENCODING = 'unicode'[0m
+  [1m[35m (522.4ms)[0m  [1m[35mCREATE DATABASE "App_test" ENCODING = 'unicode'[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClients (20200708202139)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "clients" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202139"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20200708202157)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202157"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20200708202316)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" serial primary key, "date" date, "title" character varying, "description" text, "client_id" integer, "isRead" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_351813cf27"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_client_id" ON "notifications"  ("client_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202316"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-11 19:17:09.766070"], ["updated_at", "2020-07-11 19:17:09.766070"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin1"], ["created_at", "2020-07-11 19:17:09.824604"], ["updated_at", "2020-07-11 19:17:09.824604"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin2"], ["created_at", "2020-07-11 19:17:09.826618"], ["updated_at", "2020-07-11 19:17:09.826618"]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "clients" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Client2"], ["created_at", "2020-07-11 19:17:09.847179"], ["updated_at", "2020-07-11 19:17:09.847179"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (66.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_development"[0m
+  [1m[35m (54.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "App_test"[0m
+  [1m[35m (516.6ms)[0m  [1m[35mCREATE DATABASE "App_development" ENCODING = 'unicode'[0m
+  [1m[35m (478.3ms)[0m  [1m[35mCREATE DATABASE "App_test" ENCODING = 'unicode'[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(618809237721149160);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClients (20200708202139)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "clients" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202139"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20200708202157)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "admins" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20200708202316)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" serial primary key, "date" date, "title" character varying, "description" text, "client_id" integer, "isRead" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_351813cf27"
+FOREIGN KEY ("client_id")
+  REFERENCES "clients" ("id")
+)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_client_id" ON "notifications"  ("client_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200708202316"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-11 19:17:38.398743"], ["updated_at", "2020-07-11 19:17:38.398743"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(618809237721149160)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin1"], ["created_at", "2020-07-11 19:17:38.454381"], ["updated_at", "2020-07-11 19:17:38.454381"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "admins" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Admin2"], ["created_at", "2020-07-11 19:17:38.457486"], ["updated_at", "2020-07-11 19:17:38.457486"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "clients" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Client1"], ["created_at", "2020-07-11 19:17:38.467294"], ["updated_at", "2020-07-11 19:17:38.467294"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "clients" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Client2"], ["created_at", "2020-07-11 19:17:38.469836"], ["updated_at", "2020-07-11 19:17:38.469836"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAdmin Load (4.9ms)[0m  [1m[34mSELECT "admins".* FROM "admins"[0m

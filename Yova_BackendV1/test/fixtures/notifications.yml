@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-07-08
+  title: MyString
+  description: MyText
+  client: one
+  isRead: false
+
+two:
+  date: 2020-07-08
+  title: MyString
+  description: MyText
+  client: two
+  isRead: false
